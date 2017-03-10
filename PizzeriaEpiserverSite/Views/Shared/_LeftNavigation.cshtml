@@ -1,0 +1,17 @@
+﻿@using PizzeriaEpiserverSite.Models.Pages
+@using PizzeriaEpiserverSite.Models.ViewModels
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+       }
+
+<div class="row">
+    <div class="col-md-4">
+        @{  DefaultPageViewModel<SitePageData> basemodel = new DefaultPageViewModel<SitePageData>(Model.CurrentPage);
+            Html.RenderPartial("SubNavigation", basemodel);}
+        @RenderSection("RelatedContent", false)
+    </div>
+    <div class="col-md-8">
+        @RenderBody()
+    </div>
+</div>

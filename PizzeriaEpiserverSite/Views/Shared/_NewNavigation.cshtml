@@ -1,0 +1,50 @@
+﻿@using AlloyTraining.Helpers
+@using EPiServer.Core
+@using PizzeriaEpiserverSite.Models.Pages
+@using PizzeriaEpiserverSite.Models.ViewModels
+@using PizzeriaEpiserverSite.Extensions
+@model IPageViewModel<SitePageData>
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+        <div id="navbarContainer" class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>       
+                
+
+
+                @*<a href="@ContentReference.StartPage">
+                  <img id="logo" src="/Static/img/d0088452_19251252.gif" />
+                </a>*@
+                
+                @*<h1> @ContentReference.StartPage.GetUrl()</h1>
+                <h1>@Url.ContentUrl(ContentReference.StartPage)</h1>*@
+                <a href="/@ContentReference.StartPage.GetUrl()"><img id="logo" src="/Static/img/d0088452_19251252.gif" /></a>
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    @*<li class="@(Model.CurrentPage.ContentLink.CompareToIgnoreWorkID(ContentReference.StartPage) ? "active" : null)">
+                        @Html.PageLink(ContentReference.StartPage)
+                    </li>*@
+
+                    @Html.MenuList(ContentReference.StartPage,
+            @<li class="@(item.Selected ? "active" : null)">
+                @Html.PageLink(item.Page)
+            </li>)
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+

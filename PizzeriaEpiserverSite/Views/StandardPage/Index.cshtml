@@ -1,0 +1,19 @@
+﻿@using PizzeriaEpiserverSite.Models.Pages
+@model PizzeriaEpiserverSite.Models.ViewModels.DefaultPageViewModel <StandardPage>
+
+@{
+
+    Layout = "~/Views/Shared/_LeftNavigation.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-8 clearfix">
+        <h1>@Html.PropertyFor(x => x.CurrentPage.PageName)</h1>
+        @Html.PropertyFor(x => x.CurrentPage.MainBody)
+        @Html.PropertyFor(x => x.CurrentPage.Teaser)
+    </div>
+
+</div>
+

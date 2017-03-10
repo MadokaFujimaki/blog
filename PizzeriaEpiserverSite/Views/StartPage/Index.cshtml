@@ -1,0 +1,29 @@
+﻿@*@model PizzeriaEpiserverSite.Models.Pages.StartPage*@
+@using PizzeriaEpiserverSite
+@using PizzeriaEpiserverSite.Models.ViewModels
+@model DefaultPageViewModel<PizzeriaEpiserverSite.Models.Pages.StartPage>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>*@
+
+
+@Html.PropertyFor(x => x.CurrentPage.Category1)
+
+@Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { CssClass = "row equal-height", tag = Global.ContentAreaTags.FullWidth })
+
+<hr />
+
+@Html.PropertyFor(x => x.CurrentPage.Category2)
+
+@Html.PropertyFor(x => x.CurrentPage.MainContentArea2, new { CssClass = "row equal-height", tag = Global.ContentAreaTags.FullWidth })
+
+<hr />
+
+@Html.PropertyFor(x => x.CurrentPage.Category3)
+
+@Html.PropertyFor(x => x.CurrentPage.MainContentArea3, new { CssClass = "row equal-height", tag = Global.ContentAreaTags.FullWidth })
+

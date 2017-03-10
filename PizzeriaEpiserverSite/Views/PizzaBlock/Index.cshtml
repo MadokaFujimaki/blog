@@ -1,0 +1,27 @@
+﻿@model PizzeriaEpiserverSite.Models.Blocks.PizzaBlock
+
+@*<div id="pizzaContainer" >
+    <div  id="pizzaImg"  >
+        <img class="img-responsive"  src="@Model.Image" />
+    </div>
+      <div id="pizzaText">
+          <h2>@Html.PropertyFor(x => x.Name)</h2>
+          <p>@Html.PropertyFor(x => x.Description)</p>
+          <p>@Html.PropertyFor(x => x.Price)  kr</p>
+      </div>
+    <p class="clearfix"><a class="btn btn-primary btn-lg" href="@Model.Url" role="button" target="_new">@Model.Button</a></p>
+</div>*@
+
+<div id="pizzaContainer" class="w3-card-4" >
+    <div id="imgContainer">
+        <img id="pizzaImg" src="@Model.Image" />
+    </div>
+    <div class="w3-container w3-center">
+        <h2>@Html.PropertyFor(x => x.Name)</h2>
+        @*<p>@Html.PropertyFor(x => x.Description)</p>*@
+        <p>@Html.PropertyFor(x => x.Price)  kr</p>
+        <p class="clearfix"><a class="btn btn-info btn-lg" href="@Model.Url" role="button" target="_new">@Model.Button</a></p>
+    </div>
+</div>
+
+

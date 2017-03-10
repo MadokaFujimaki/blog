@@ -1,0 +1,89 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    width: 100%;
+    background-color:azure;
+    color: dimgray;
+        font-family:"Tahoma";
+ 
+}
+
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*#pizzaContainer {
+    padding: 0px;
+    box-shadow: 10px 10px 5px grey;
+}*/
+
+#pizzaContainer {
+    width: 270px;
+    float: left;
+    margin: 11px;
+    background-color: white;
+}
+
+#imgContainer {
+    width: 270px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+#pizzaImg {
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+    width: 400px;
+}
+
+#pizzaText {
+    margin-left: 200px;
+    padding-left: 200px;
+}
+
+.navbar {
+    background-color:lightpink;
+}
+
+/*.navbar-inner {
+    min-height: 0px;
+     
+}*/
+
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 150px;
+    height: 150px;
+    padding-top: 0;
+}
+
+.navbar-inverse .navbar-brand {
+    color: dimgray;
+    font-size: 70px;
+
+}
+
+.nav.navbar-nav li a {
+    color: dimgray;
+    float: right;
+}
+
+#logo{
+    width:200px
+}
