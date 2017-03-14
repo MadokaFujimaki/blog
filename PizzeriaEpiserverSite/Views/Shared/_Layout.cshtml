@@ -39,6 +39,7 @@
     <br />
     <div class="container body-content">
         @RenderBody()
+        @*@{Html.RenderPartial("Footer", new FooterModel(Model.CurrentPage));}*@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

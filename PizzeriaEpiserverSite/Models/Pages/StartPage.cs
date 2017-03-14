@@ -54,5 +54,9 @@ namespace PizzeriaEpiserverSite.Models.Pages
         [CultureSpecific]
         public virtual ContentArea MainContentArea3 { get; set; }
 
+        [Display(
+        GroupName = SystemTabNames.Settings)]
+        public virtual PageReference SearchPageLink { get; set; }
+
     }
 }
