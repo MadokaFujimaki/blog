@@ -1,5 +1,7 @@
-﻿@using AlloyTraining.Helpers
+﻿@using PizzeriaEpiserverSite.Helpers
 @using EPiServer.Core
+@using EPiServer
+@using PizzeriaEpiserverSite.Business
 @using PizzeriaEpiserverSite.Models.Pages
 @using PizzeriaEpiserverSite.Models.ViewModels
 @using PizzeriaEpiserverSite.Extensions
@@ -22,19 +24,36 @@
 
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-left">
                     @*<li class="@(Model.CurrentPage.ContentLink.CompareToIgnoreWorkID(ContentReference.StartPage) ? "active" : null)">
-                        @Html.PageLink(ContentReference.StartPage)
-                    </li>*@
+                    @Html.PageLink(ContentReference.StartPage)
+                </li>*@
 
                     @Html.MenuList(ContentReference.StartPage,
-            @<li class="@(item.Selected ? "active" : null)">
-                @Html.PageLink(item.Page)
-            </li>)
+                @<li class="@(item.Selected ? "active" : null)">
+                    @Html.PageLink(item.Page)
+                </li>)
                 </ul>
+                <div class="navbar-search">
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = DataFactory.Instance.Get<PizzeriaEpiserverSite.Models.Pages.StartPage>(PageReference.StartPage).SearchPageLink.ExternalURLFromReference() }))
+                    {
+                        <div class="col-sm-3 col-md-3 pull-right" >
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" tabindex="1" name="q" id="SearchKeywords" placeholder="Search" />
+                                    <div class="input-group-btn">
+                                        <button tabindex="2" class="btn" type="submit"><i class="glyphicon glyphicon-search" id="SearchButton"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    }
+                </div>
+
             </div>
         </div>
     </div>
+
 
 
 

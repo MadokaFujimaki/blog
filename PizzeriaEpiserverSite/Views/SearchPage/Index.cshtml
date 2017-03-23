@@ -1,33 +1,43 @@
-﻿@using AlloyTraining.Business
+﻿@using PizzeriaEpiserverSite.Business
 @model PizzeriaEpiserverSite.Models.ViewModels.SearchPageViewModel
 
 <div class="row">
     <div class="span8">
         @using (Html.BeginForm(null, null, null, EPiServer.Editor.PageEditing.PageIsInEditMode ? FormMethod.Post : FormMethod.Get))
         {
-            <input type="text" tabindex="1" name="q" value="@Model.SearchText" />
-            <input type="submit" tabindex="2" class="btn" value="Search" />
+            <div class="col-sm-3 col-md-3 pull-left">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input class="form-control" type="text" tabindex="1" name="q" value="@Model.SearchText" />
+                        <div class="input-group-btn">
+                            <button tabindex="2" class="btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            @*<input type="submit" tabindex="2" class="btn" value="Search" />*@
+                        </div>
+                    </div>
+                </form>
+            </div>
         }
 
-        @if (@Model.SearchResult != null)
-        {
-            <div class="row">
-                <div class="col-md-8 grayHead">
-                    <h2>Search Results</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 SearchResults">
-                    @foreach (var item in Model.SearchResult)
-                    {
-                        <div class="listResult">
-                            <h3><a href="@item.GetExternalUrl()">@item.Title</a></h3>
-                            <p>@item.DisplayText.TruncateAtWord(20)</p>
-                            <hr />
+                @if (@Model.SearchResult != null)
+                {
+                    <div class="row">
+                        <div class="col-md-8 grayHead">
+                            @*<h2>Search Results</h2>*@
                         </div>
-                    }
-                </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-8 SearchResults">
+                            @foreach (var item in Model.SearchResult)
+                            {
+                                <div class="listResult">
+                                    <h3><a href="@item.GetExternalUrl()">@item.Title</a></h3>
+                                    <p>@item.DisplayText.TruncateAtWord(20)</p>
+                                    <hr />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
             </div>
-        }
-    </div>
 </div>

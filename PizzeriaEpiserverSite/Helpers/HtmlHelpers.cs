@@ -8,13 +8,12 @@ using System.Web.Mvc;
 using System.Web.WebPages;
 using EPiServer.Core;
 using EPiServer.ServiceLocation;
-using AlloyTraining.Business;
+using PizzeriaEpiserverSite.Business;
 using EPiServer.Web.Mvc.Html;
 using EPiServer.Web.Routing;
 using EPiServer;
-using Alloy.Business;
 
-namespace AlloyTraining.Helpers
+namespace PizzeriaEpiserverSite.Helpers
 {
     public static class HtmlHelpers
     {

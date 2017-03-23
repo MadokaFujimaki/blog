@@ -7,7 +7,7 @@ using EPiServer.ServiceLocation;
 using EPiServer;
 using System;
 
-namespace Alloy.Business
+namespace PizzeriaEpiserverSite.Business
 {
     /// <summary>
     /// Extension methods for content

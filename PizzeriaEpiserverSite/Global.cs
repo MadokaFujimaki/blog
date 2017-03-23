@@ -30,6 +30,9 @@ namespace PizzeriaEpiserverSite
         //    [Display(Name = "Specialized", Order = 7)]
         //    public const string Specialized = "Specialized";
         //}
+
+        
+
         public static class ContentAreaTags
         {
             public const string FullWidth = "span12";
