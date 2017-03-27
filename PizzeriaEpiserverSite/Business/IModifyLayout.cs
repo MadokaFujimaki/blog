@@ -1,6 +1,6 @@
-﻿using AlloyTraining.Models.ViewModels;
+﻿using PizzeriaEpiserverSite.Models.ViewModels;
 
-namespace AlloyTraining.Business
+namespace PizzeriaEpiserverSite.Business
 {
     /// <summary>
     /// Defines a method which may be invoked by PageContextActionFilter allowing controllers

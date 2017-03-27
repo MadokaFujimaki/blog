@@ -6,7 +6,7 @@ using EPiServer.Core;
 using EPiServer.SpecializedProperties;
 using PizzeriaEpiserverSite.Models.Blocks;
 
-namespace AlloyTraining.Models.ViewModels
+namespace PizzeriaEpiserverSite.Models.ViewModels
 {
     public class LayoutModel
     {

@@ -1,5 +1,5 @@
 ﻿using PizzeriaEpiserverSite.Business;
-using AlloyTraining.Models.ViewModels;
+using PizzeriaEpiserverSite.Models.ViewModels;
 using EPiServer.Core;
 using PizzeriaEpiserverSite.Models.Pages;
 using System;
