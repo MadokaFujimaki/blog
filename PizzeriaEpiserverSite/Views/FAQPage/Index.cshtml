@@ -1,0 +1,24 @@
+﻿@using PizzeriaEpiserverSite.Models.ViewModels
+@using PizzeriaEpiserverSite.Models.Pages
+
+@model  DefaultPageViewModel<FAQPage>
+
+<h2>FAQ page</h2>
+<hr/>
+<div class="navbar">
+    <h3>Enter a question!</h3>
+    @using (Html.BeginForm("Submit", null, null, FormMethod.Get))
+    {
+        <input type="text" tabindex="1" name="question" value=""/>
+        <input type="submit" tabindex="2" name="btn" value="Submit" />
+    }
+</div>
+<div class="nav-stacked">
+    <h2>FAQ list</h2>
+    @foreach (var faqItem in Model.CurrentPage.FAQItems)
+    {
+        <h3>@faqItem.Question</h3>
+        <p>@faqItem.Answer</p>
+        <hr/>
+    }
+</div>
