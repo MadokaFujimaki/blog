@@ -13,7 +13,7 @@
 
 //namespace PizzeriaEpiserverSite.Models.ViewModels
 //{
-//      public class FooterModel
+//    public class FooterModel
 //    {
 //        public bool loggedIn;
 //        public PageDataCollection productPages;
@@ -47,7 +47,6 @@
 //            criteria.Add(prodpagecriterion);
 
 //            productPages = DataFactory.Instance.FindPagesWithCriteria(PageReference.StartPage, criteria);
-    
 //        }
 //    }
 //}
