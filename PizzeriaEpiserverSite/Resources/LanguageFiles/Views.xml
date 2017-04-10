@@ -3,6 +3,16 @@
   
   <language name="English" id="en">
 
+    <postedcomment>
+      <form>
+        <fieldsetlegend>What do you think? Write a comment!</fieldsetlegend>
+        <commentatornamelabel>Your name</commentatornamelabel>
+        <commenttextlabel>Comment</commenttextlabel>
+        <submitbutton>Add comment</submitbutton>     
+      </form>
+      <listheading>Comments on this article</listheading>
+    </postedcomment>
+    
     <contact>
       <email>E-mail</email>
       <phone>Phone</phone>

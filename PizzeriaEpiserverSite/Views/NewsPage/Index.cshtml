@@ -1,4 +1,5 @@
-﻿@model PizzeriaEpiserverSite.Models.ViewModels.DefaultPageViewModel<PizzeriaEpiserverSite.Models.Pages.NewsPage>
+﻿@using EPiServer.Core
+@model PizzeriaEpiserverSite.Models.ViewModels.NewsPageViewModel
 
 @{
     Layout = "~/Views/Shared/_LeftNavigation.cshtml";
@@ -14,3 +15,26 @@
         @Html.PropertyFor(x => x.CurrentPage.MainListing)
     </div>
 </div>
+
+<br/>
+
+@if (!ContentReference.IsNullOrEmpty(Model.CurrentPage.CommentFolder))
+{
+    <h3>@Html.Translate("/postedcomment/listheading")</h3>
+    foreach (var c in Model.CommentList)
+    {
+        Html.RenderPartial("PostedComment", c);
+    }
+
+    using (Html.BeginForm("Create", null, FormMethod.Post))
+    {
+    <fieldset>
+        <legend>@Html.Translate("/postedcomment/form/fieldsetlegend")</legend>
+        @Html.Label(@Html.Translate(""))
+        @Html.TextBox("CommentatorName")
+        @Html.Label(@Html.Translate("/postedcomment/form/commenttextlabel"))
+        @Html.TextArea("Text")
+        <input type="submit" value=@Html.Translate("/postedcomment/form/submitbutton")/>
+    </fieldset>
+}
+}

@@ -2,13 +2,15 @@
     padding-top: 50px;
     padding-bottom: 20px;
     width: 100%;
-    background-color:azure;
+    background-color: azure;
     color: dimgray;
-        font-family:"Tahoma";
- 
+    font-family: "Tahoma";
 }
 
-
+legend {
+    color: dimgray;
+    font-family: "Tahoma";
+}
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -58,7 +60,7 @@ textarea {
 }
 
 .navbar {
-    background-color:lightpink;
+    background-color: lightpink;
 }
 
 /*.navbar-inner {
@@ -76,7 +78,6 @@ textarea {
 .navbar-inverse .navbar-brand {
     color: dimgray;
     font-size: 70px;
-
 }
 
 .nav.navbar-nav li a {
@@ -84,9 +85,7 @@ textarea {
     float: right;
 }
 
-#logo{
-    width:150px;
-    margin-right:20px;
-   
+#logo {
+    width: 150px;
+    margin-right: 20px;
 }
-
