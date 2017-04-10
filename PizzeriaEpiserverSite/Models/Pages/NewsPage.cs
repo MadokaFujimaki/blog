@@ -26,7 +26,5 @@ namespace PizzeriaEpiserverSite.Models.Pages
           Order = 500)]
         [UIHint(UIHint.BlockFolder)]
         public virtual ContentReference CommentFolder { get; set; }
-
-
     }
 }

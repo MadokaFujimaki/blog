@@ -10,7 +10,7 @@ namespace PizzeriaEpiserverSite.Models.ViewModels
     public class NewsPageViewModel : IPageViewModel<NewsPage>
     {
         public NewsPage CurrentPage { get; set; }
-        public IEnumerable<PostedComment> CommentList { get; set; } = new List<PostedComment>();
+        public IEnumerable<PostedComment> CommentList { get; set; }
 
         public NewsPageViewModel(NewsPage currentPage)
         {
