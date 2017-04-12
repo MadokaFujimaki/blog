@@ -16,9 +16,10 @@
     </div>
 </div>
 
-<br/>
+<br />
 
-@if (!ContentReference.IsNullOrEmpty(Model.CurrentPage.CommentFolder))
+@*@if (!ContentReference.IsNullOrEmpty(Model.CurrentPage.CommentFolder))*@
+@if(Model.CommentFolderIsSet)
 {
     <h3>@Html.Translate("/postedcomment/listheading")</h3>
     foreach (var c in Model.CommentList)
@@ -26,15 +27,18 @@
         Html.RenderPartial("PostedComment", c);
     }
 
-    using (Html.BeginForm("Create", null, FormMethod.Post))
+    if (Model.HasCommentPublishAccess)
     {
-    <fieldset>
-        <legend>@Html.Translate("/postedcomment/form/fieldsetlegend")</legend>
-        @Html.Label(@Html.Translate("/postedcomment/form/commentatornamelabel"))
-        @Html.TextBox("CommentatorName")
-        @Html.Label(@Html.Translate("/postedcomment/form/commenttextlabel"))
-        @Html.TextArea("Text")
-        <input type="submit" value=@Html.Translate("/postedcomment/form/submitbutton")/>
-    </fieldset>
-}
+        using (Html.BeginForm("Create", null, FormMethod.Post))
+        {
+            <fieldset>
+                <legend>@Html.Translate("/postedcomment/form/fieldsetlegend")</legend>
+                @Html.Label(@Html.Translate("/postedcomment/form/commentatornamelabel"))
+                @Html.TextBox("CommentatorName")
+                @Html.Label(@Html.Translate("/postedcomment/form/commenttextlabel"))
+                @Html.TextArea("Text")
+                <input type="submit" value=@Html.Translate("/postedcomment/form/submitbutton") />
+            </fieldset>
+        }
+    }
 }

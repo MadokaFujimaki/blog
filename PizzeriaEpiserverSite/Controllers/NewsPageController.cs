@@ -28,7 +28,9 @@ namespace PizzeriaEpiserverSite.Controllers
             //DefaultPageViewModel<NewsPage> model = new DefaultPageViewModel<NewsPage>(currentPage);
             var model = new NewsPageViewModel(currentPage)
             {
-                CommentList = _commentHandler.LoadComments(currentPage.CommentFolder)
+                CommentList = _commentHandler.LoadComments(currentPage.CommentFolder),
+                HasCommentPublishAccess = _commentHandler.CurrentUserHasCommentPublishAccess(currentPage.CommentFolder),
+                CommentFolderIsSet = _commentHandler.CommentFolderIsSet(currentPage.CommentFolder)
             };
             return View(model);
         }

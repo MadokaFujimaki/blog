@@ -11,6 +11,8 @@ namespace PizzeriaEpiserverSite.Models.ViewModels
     {
         public NewsPage CurrentPage { get; set; }
         public IEnumerable<PostedComment> CommentList { get; set; }
+        public bool HasCommentPublishAccess { get; set; }
+        public bool CommentFolderIsSet { get; set; }
 
         public NewsPageViewModel(NewsPage currentPage)
         {
