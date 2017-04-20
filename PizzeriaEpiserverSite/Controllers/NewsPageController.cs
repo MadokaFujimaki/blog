@@ -43,5 +43,11 @@ namespace PizzeriaEpiserverSite.Controllers
             //save the comment
             return RedirectToAction("Index");
         }
+
+        public ActionResult ReportComment(ContentReference commentReference)
+        {
+            _commentHandler.ReportComment(commentReference);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -89,5 +89,27 @@ namespace PizzeriaEpiserverSite.Business.Comments
         {
             return !ContentReference.IsNullOrEmpty(commentFolderReference);
         }
+
+        //Hide comment from the list.  mark the comment as reported.
+        public void ReportComment(ContentReference commentReference)
+        {
+            if (ContentReference.IsNullOrEmpty(commentReference))
+            {
+                throw new NullReferenceException();
+            }
+    
+            PostedComment reportedComment = _contentRepository.Get<PostedComment>(commentReference);
+            // create a writeble clone to give write access to the content item.
+            //To get access to the schedulingproperties of the shared block it need to be casted to IVersionable.
+            var commentToUpdate = reportedComment.CreateWritableClone() as IVersionable;
+
+            commentToUpdate.StopPublish = DateTime.Now; //make the content item expire.
+
+            _contentRepository.Save(
+                commentToUpdate as IContent,
+                EPiServer.DataAccess.SaveAction.Publish,
+                EPiServer.Security.AccessLevel.Read
+            );
+        }
     }
 }

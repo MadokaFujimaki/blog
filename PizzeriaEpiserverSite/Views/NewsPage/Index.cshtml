@@ -24,6 +24,14 @@
     <h3>@Html.Translate("/postedcomment/listheading")</h3>
     foreach (var c in Model.CommentList)
     {
+        ContentReference currentCommentRef = ((IContent) c).ContentLink;
+        <div class="date">
+            @Html.ActionLink(
+           Html.Translate("/postedcomment/reportcommentlink"),
+           "ReportComment",
+           new {commentReference = currentCommentRef})
+        </div>
+
         Html.RenderPartial("PostedComment", c);
     }
 
