@@ -11,6 +11,7 @@
         <submitbutton>Add comment</submitbutton>     
       </form>
       <listheading>Comments on this article</listheading>
+      <reportcommentlink>Report this comment</reportcommentlink>
     </postedcomment>
     
     <contact>

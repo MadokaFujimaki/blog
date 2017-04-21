@@ -38,9 +38,8 @@ namespace PizzeriaEpiserverSite.Controllers
         [HttpPost]
         public ActionResult Create(NewsPage currentPage, string CommentatorName, string Text)
         {
-            _commentHandler.AddComment(currentPage.CommentFolder, CommentatorName, Text, DateTime.Now);
+            _commentHandler.AddComment(currentPage.CommentFolder, CommentatorName, Text, DateTime.Now);   //save the comment
 
-            //save the comment
             return RedirectToAction("Index");
         }
 

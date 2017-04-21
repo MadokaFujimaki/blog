@@ -101,7 +101,7 @@ namespace PizzeriaEpiserverSite.Business.Comments
             PostedComment reportedComment = _contentRepository.Get<PostedComment>(commentReference);
             // create a writeble clone to give write access to the content item.
             //To get access to the schedulingproperties of the shared block it need to be casted to IVersionable.
-            var commentToUpdate = reportedComment.CreateWritableClone() as IVersionable;
+            var commentToUpdate = reportedComment.CreateWritableClone() as IVersionable; // 書込み可能なコピー
 
             commentToUpdate.StopPublish = DateTime.Now; //make the content item expire.
 
