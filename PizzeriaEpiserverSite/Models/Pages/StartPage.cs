@@ -1,59 +1,56 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
 using EPiServer.Web;
+using PizzeriaEpiserverSite.Business.Comments;
 using PizzeriaEpiserverSite.Models.Blocks;
 
 namespace PizzeriaEpiserverSite.Models.Pages
 {
     [ContentType(DisplayName = "StartPage", GUID = "770efc92-b99b-4b92-80c4-80a4a82bda52", Description = "")]
-    public class StartPage : SitePageData
+    public class StartPage : StandardPage, ICommentableContent
     {
-
-        [CultureSpecific]
         [Display(
-            Name = "Category1",
-            Description = "The main body will be shown in the main content area of the page, using the XHTML-editor you can insert for example text, images and tables.",
-            GroupName = SystemTabNames.Content,
-            Order = 1)]
-        public virtual XhtmlString Category1 { get; set; }
+          Name = "MainListing",
+          Description = "A listing of news pages",
+          GroupName = SystemTabNames.Content,
+          Order = 315)]
+        public virtual ListingBlock MainListing { get; set; }
 
         [Display(
-        GroupName = SystemTabNames.Content,
-        Order = 2)]
-        [CultureSpecific]
-        public virtual ContentArea MainContentArea { get; set; }
+          Name = "Comment folder",
+          Description = "Folder used as root for comments. If not set, comment function will be disabled",
+          GroupName = SystemTabNames.Content,
+          Order = 500)]
+        [UIHint(UIHint.BlockFolder)]
+        public virtual ContentReference CommentFolder { get; set; }
 
-        [CultureSpecific]
-        [Display(
-       Name = "Category2",
-       Description = "The main body will be shown in the main content area of the page, using the XHTML-editor you can insert for example text, images and tables.",
-       GroupName = SystemTabNames.Content,
-       Order = 3)]
-        public virtual XhtmlString Category2 { get; set; }
 
-        [Display(
-        GroupName = SystemTabNames.Content,
-        Order = 320)]
-        [CultureSpecific]
-        public virtual ContentArea MainContentArea2 { get; set; }
+        #region ICommentableContent Members
+        public void ConfigureCommentSettings()
+        {
+            if (!ContentReference.IsNullOrEmpty(this.CommentFolder))
+            {
+                return;
+            }
 
-        [CultureSpecific]
-        [Display(
-        Name = "Category3",
-        Description = "The main body will be shown in the main content area of the page, using the XHTML-editor you can insert for example text, images and tables.",
-        GroupName = SystemTabNames.Content,
-        Order = 3)]
-        public virtual XhtmlString Category3 { get; set; }
+            var contentRepository = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IContentRepository>();
+            var newCommentFolder = CommentHandler.AddNewCommentFolder(contentRepository, this);
+            if (newCommentFolder == null)
+            {
+                return;
+            }
 
-        [Display(
-        GroupName = SystemTabNames.Content,
-        Order = 320)]
-        [CultureSpecific]
-        public virtual ContentArea MainContentArea3 { get; set; }
+            var editableNewsPage = this.CreateWritableClone() as NewsPage;
+            editableNewsPage.CommentFolder = newCommentFolder.ContentLink;
+            contentRepository.Save(editableNewsPage, EPiServer.DataAccess.SaveAction.Publish,
+                EPiServer.Security.AccessLevel.Publish);
+        }
+        #endregion
 
         [Display(
         GroupName = SystemTabNames.Settings)]
@@ -65,7 +62,6 @@ namespace PizzeriaEpiserverSite.Models.Pages
             GroupName = SystemTabNames.Settings
             )]
         [UIHint(UIHint.BlockFolder)]
-
         public virtual ContentReference CommentRoot { get; set; }
     }
 }

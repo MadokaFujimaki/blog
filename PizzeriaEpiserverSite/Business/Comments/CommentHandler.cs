@@ -5,6 +5,7 @@ using System.Web;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAccess;
+using EPiServer.ServiceLocation;
 using PizzeriaEpiserverSite.Models.Blocks;
 using PizzeriaEpiserverSite.Models.Pages;
 
@@ -52,7 +53,10 @@ namespace PizzeriaEpiserverSite.Business.Comments
 
         public static ContentFolder AddNewCommentFolder(IContentRepository contentRepository, IContent contentItemToComment)
         {
-            var rootFolderReference = contentRepository.Get<StartPage>(ContentReference.StartPage).CommentRoot;
+            var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+            var newspage = contentLoader.Get<NewsPage>(ContentReference.StartPage).CommentRoot;
+            var rootFolderReference = contentRepository.Get<NewsPage>(ContentReference.StartPage).CommentRoot;
+            rootFolderReference = newspage;
 
             if (ContentReference.IsNullOrEmpty(rootFolderReference))
             {

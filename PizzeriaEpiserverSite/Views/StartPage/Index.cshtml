@@ -1,30 +1,52 @@
-﻿@*@model PizzeriaEpiserverSite.Models.Pages.StartPage*@
-@using PizzeriaEpiserverSite
-@using PizzeriaEpiserverSite.Models.ViewModels
-@model DefaultPageViewModel<PizzeriaEpiserverSite.Models.Pages.StartPage>
-
+﻿@using EPiServer.Core
+@model PizzeriaEpiserverSite.Models.ViewModels.StartPageViewModel
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LeftNavigation.cshtml";
 }
 
-@*<h2>Index</h2>*@
+<h1>@Html.PropertyFor(x => x.CurrentPage.PageName)</h1>
+<p class="introduction">
+    @Html.PropertyFor(m => m.CurrentPage.MetaDescription)
+</p>
+<div class="row">
+    <div class="col-md-8">
+        @Html.PropertyFor(x => x.CurrentPage.MainBody)
+        @Html.PropertyFor(x => x.CurrentPage.MainListing)
+    </div>
+</div>
 
+<br />
 
+@*@if (!ContentReference.IsNullOrEmpty(Model.CurrentPage.CommentFolder))*@
+@if (Model.CommentFolderIsSet)
+{
+    <h3>@Html.Translate("/postedcomment/listheading")</h3>
+    foreach (var c in Model.CommentList)
+    {
+        ContentReference currentCommentRef = ((IContent)c).ContentLink;
+        <div class="date">
+            @Html.ActionLink(
+           Html.Translate("/postedcomment/reportcommentlink"),
+           "ReportComment",
+           new { commentReference = currentCommentRef })
+        </div>
 
-@Html.PropertyFor(x => x.CurrentPage.Category1)
+        Html.RenderPartial("PostedComment", c);
+    }
 
-@Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { CssClass = "row equal-height", tag = Global.ContentAreaTags.FullWidth })
-
-<hr />
-
-@Html.PropertyFor(x => x.CurrentPage.Category2)
-
-@Html.PropertyFor(x => x.CurrentPage.MainContentArea2, new { CssClass = "row equal-height", tag = Global.ContentAreaTags.FullWidth })
-
-<hr />
-
-@Html.PropertyFor(x => x.CurrentPage.Category3)
-
-@Html.PropertyFor(x => x.CurrentPage.MainContentArea3, new { CssClass = "row equal-height", tag = Global.ContentAreaTags.FullWidth })
-
+    if (Model.HasCommentPublishAccess)
+    {
+        using (Html.BeginForm("Create", null, FormMethod.Post))
+        {
+            <fieldset>
+                <legend>@Html.Translate("/postedcomment/form/fieldsetlegend")</legend>
+                @Html.Label(@Html.Translate("/postedcomment/form/commentatornamelabel"))
+                @Html.TextBox("CommentatorName")
+                @Html.Label(@Html.Translate("/postedcomment/form/commenttextlabel"))
+                @Html.TextArea("Text")
+                <input type="submit" value=@Html.Translate("/postedcomment/form/submitbutton") />
+            </fieldset>
+        }
+    }
+}

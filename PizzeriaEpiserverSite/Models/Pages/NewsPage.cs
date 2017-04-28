@@ -51,5 +51,17 @@ namespace PizzeriaEpiserverSite.Models.Pages
                 EPiServer.Security.AccessLevel.Publish);
         }
         #endregion
+
+        [Display(
+     GroupName = SystemTabNames.Settings)]
+        public virtual PageReference SearchPageLink { get; set; }
+
+        [Display(
+            Name = "Comment root folder",
+            Description = "Content folder used as root for comments",
+            GroupName = SystemTabNames.Settings
+            )]
+        [UIHint(UIHint.BlockFolder)]
+        public virtual ContentReference CommentRoot { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿@using PizzeriaEpiserverSite.Helpers
 @using EPiServer.Core
 @using EPiServer
+@using EPiServer.ServiceLocation
 @using PizzeriaEpiserverSite.Business
 @using PizzeriaEpiserverSite.Models.Pages
 @using PizzeriaEpiserverSite.Models.ViewModels
@@ -20,7 +21,7 @@
                           
                 @*<h1> @ContentReference.StartPage.GetUrl()</h1>
                 <h1>@Url.ContentUrl(ContentReference.StartPage)</h1>*@
-                <a href="/@ContentReference.StartPage.GetUrl()"><img id="logo" src="/Static/img/d0088452_19251252.gif" /></a>
+                <a href="/@ContentReference.StartPage.GetUrl()"><img id="logo" src="/Static/img/BloggLogo2.png" /></a>
 
             </div>
             <div class="navbar-collapse collapse">
@@ -30,12 +31,16 @@
                 </li>*@
 
                     @Html.MenuList(ContentReference.StartPage,
-                @<li class="@(item.Selected ? "active" : null)">
-                    @Html.PageLink(item.Page)
-                </li>)
+                        @<li class="@(item.Selected ? "active" : null)">
+                            @Html.PageLink(item.Page)
+                        </li>)
                 </ul>
+                @*@{
+                    var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+                    var newspage = contentLoader.Get<NewsPage>(Model.CurrentPage.ContentLink);
+                }*@
                 <div class="navbar-search">
-                    @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = DataFactory.Instance.Get<PizzeriaEpiserverSite.Models.Pages.StartPage>(PageReference.StartPage).SearchPageLink.ExternalURLFromReference() }))
+                    @*@using (Html.BeginForm(null, null, FormMethod.Post, new { @action = DataFactory.Instance.Get<PizzeriaEpiserverSite.Models.Pages.NewsPage>(newspage.ContentLink).SearchPageLink.ExternalURLFromReference() }))
                     {
                         <div class="col-sm-3 col-md-3 pull-right" >
                             <form class="navbar-form" role="search">
@@ -47,7 +52,7 @@
                                 </div>
                             </form>
                         </div>
-                    }
+                    }*@
                 </div>
 
             </div>
