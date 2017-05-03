@@ -10,7 +10,7 @@ namespace PizzeriaEpiserverSite.Models.ViewModels
     public class BlogCategoryListViewModel : IPageViewModel<BlogCategoryListPage>
     {
         public List<Category> Categories { get; set; }
-        public List<SitePageData> Pages { get; set; }
+        public List<BlogPage> Pages { get; set; }
         public BlogCategoryListPage CurrentPage { get; }
         public BlogCategoryListViewModel(BlogCategoryListPage currentPage)
         {

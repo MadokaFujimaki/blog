@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
+using EPiServer.Filters;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc;
@@ -26,10 +27,39 @@ namespace PizzeriaEpiserverSite.Controllers
             return View(model);
         }
 
-        private List<SitePageData> FindPagesForCategory(string category)
+        private List<BlogPage> FindPagesForCategory(string category)
         {
 
-            return new List<SitePageData>();
+            var pageTypeId = ServiceLocator.Current.GetInstance<IContentTypeRepository>()
+                .Load<BlogPage>()
+                .ID;
+
+            var criteria = new PropertyCriteria
+            {
+                Condition = CompareCondition.Equal,
+                Name = "PageTypeID",
+                Type = PropertyDataType.PageType,
+                Value = pageTypeId.ToString(),
+                Required = true
+            };
+
+            PropertyCriteria categoryCriteria = new PropertyCriteria();
+            categoryCriteria.Name = "PageCategory";
+            categoryCriteria.Type = PropertyDataType.Category;
+            categoryCriteria.Condition = CompareCondition.Equal;
+            categoryCriteria.Value = category; 
+
+            var criterias = new PropertyCriteriaCollection
+            {
+                criteria,
+                categoryCriteria
+            };
+
+            var criteriaQueryService = ServiceLocator.Current.GetInstance<IPageCriteriaQueryService>();
+            var pages = criteriaQueryService.FindPagesWithCriteria(PageReference.StartPage, criterias);
+
+            return pages.Cast<BlogPage>().ToList();
+            //return new List<BlogPage>();
         }
 
         private List<Category> GetAllCategories()
