@@ -256,7 +256,7 @@
     <Compile Include="Business\StructureMapDependencyResolver.cs" />
     <Compile Include="Configuration\IRequiresConfigurationOnStartup.cs" />
     <Compile Include="Configuration\RoutingConfiguration.cs" />
-    <Compile Include="Controllers\BlogCateoryListPageController.cs" />
+    <Compile Include="Controllers\BlogCategoryListPageController.cs" />
     <Compile Include="Controllers\FAQPageController.cs" />
     <Compile Include="Controllers\ForumPageController.cs" />
     <Compile Include="Controllers\ListingBlockController.cs" />
@@ -288,6 +288,7 @@
     <Compile Include="Models\Blocks\SiteLogotypeBlock.cs" />
     <Compile Include="Models\Blocks\TeaserBlock.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
+    <Compile Include="Models\Pages\BlogCategoryListPage.cs" />
     <Compile Include="Models\Pages\FAQItem.cs" />
     <Compile Include="Models\Pages\FAQPage.cs" />
     <Compile Include="Models\Pages\ForumPage.cs" />
@@ -305,7 +306,7 @@
     <Compile Include="Models\ViewModels\LayoutModel.cs" />
     <Compile Include="Models\ViewModels\ListingBlockModel.cs" />
     <Compile Include="Models\ViewModels\BlogPageViewModel.cs" />
-    <Compile Include="Models\ViewModels\BlogCateoryListViewModel.cs" />
+    <Compile Include="Models\ViewModels\BlogCategoryListViewModel.cs" />
     <Compile Include="Models\ViewModels\SearchPageViewModel.cs" />
     <Compile Include="Models\ViewModels\StartPageViewModel.cs" />
     <Compile Include="Plugins\DebugPlugin.aspx.cs">
@@ -382,7 +383,7 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\FAQPage\Index.cshtml" />
     <Content Include="Views\Shared\PostedComment.cshtml" />
-    <Content Include="Views\BlogCateoryListPage\Index.cshtml" />
+    <Content Include="Views\BlogCategoryListPage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

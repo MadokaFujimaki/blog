@@ -1,0 +1,28 @@
+﻿@model PizzeriaEpiserverSite.Models.ViewModels.BlogCategoryListViewModel
+
+@foreach (var page in Model.Pages)
+{
+    <h2>@page.Name</h2>
+}
+
+@foreach (var category in Model.Categories)
+{
+    <h3>@category.Name</h3>
+}
+
+@*@if (Model.category != null)
+{
+    foreach (var item in Model.category)
+    {
+        <div class="listResult theme1">
+            <h3>@Html.PageLink(item)</h3>
+            <p class="date">
+                @item.StartPublish.Value.ToString("d MMMM yyyy")
+            </p>
+            @if (item.Property["MainBody"] != null)
+            {
+                @item.Property["MainBody"].Value
+            }
+            <hr />
+        </div>
+    }*@
