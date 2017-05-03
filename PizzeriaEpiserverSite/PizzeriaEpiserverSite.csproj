@@ -256,10 +256,11 @@
     <Compile Include="Business\StructureMapDependencyResolver.cs" />
     <Compile Include="Configuration\IRequiresConfigurationOnStartup.cs" />
     <Compile Include="Configuration\RoutingConfiguration.cs" />
+    <Compile Include="Controllers\BlogCateoryListPageController.cs" />
     <Compile Include="Controllers\FAQPageController.cs" />
     <Compile Include="Controllers\ForumPageController.cs" />
     <Compile Include="Controllers\ListingBlockController.cs" />
-    <Compile Include="Controllers\NewsPageController.cs" />
+    <Compile Include="Controllers\BlogPageController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
     <Compile Include="Controllers\PagePartialController.cs" />
     <Compile Include="Controllers\PagePartialWideController.cs" />
@@ -290,7 +291,7 @@
     <Compile Include="Models\Pages\FAQItem.cs" />
     <Compile Include="Models\Pages\FAQPage.cs" />
     <Compile Include="Models\Pages\ForumPage.cs" />
-    <Compile Include="Models\Pages\NewsPage.cs" />
+    <Compile Include="Models\Pages\BlogPage.cs" />
     <Compile Include="Models\Pages\PreviewBlock.cs" />
     <Compile Include="Models\Pages\ProductPage.cs" />
     <Compile Include="Models\Pages\SearchPage.cs" />
@@ -303,7 +304,8 @@
     <Compile Include="Models\ViewModels\IPageViewModel.cs" />
     <Compile Include="Models\ViewModels\LayoutModel.cs" />
     <Compile Include="Models\ViewModels\ListingBlockModel.cs" />
-    <Compile Include="Models\ViewModels\NewsPageViewModel.cs" />
+    <Compile Include="Models\ViewModels\BlogPageViewModel.cs" />
+    <Compile Include="Models\ViewModels\BlogCateoryListViewModel.cs" />
     <Compile Include="Models\ViewModels\SearchPageViewModel.cs" />
     <Compile Include="Models\ViewModels\StartPageViewModel.cs" />
     <Compile Include="Plugins\DebugPlugin.aspx.cs">
@@ -372,7 +374,7 @@
     <Content Include="Views\TeaserBlock\Index.cshtml" />
     <Content Include="Views\Preview\Index.cshtml" />
     <Content Include="Views\ListingBlock\Index.cshtml" />
-    <Content Include="Views\NewsPage\Index.cshtml" />
+    <Content Include="Views\BlogPage\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_NewNavigation.cshtml" />
     <Content Include="Views\Shared\SubNavigation.cshtml" />
@@ -380,6 +382,7 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\FAQPage\Index.cshtml" />
     <Content Include="Views\Shared\PostedComment.cshtml" />
+    <Content Include="Views\BlogCateoryListPage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

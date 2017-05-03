@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using EPiServer.DataAbstraction;
+using EPiServer.ServiceLocation;
 
 namespace PizzeriaEpiserverSite.Business
 {
@@ -60,6 +62,12 @@ namespace PizzeriaEpiserverSite.Business
             uriBuilder.Path = pageURL;
 
             return uriBuilder.Uri.AbsoluteUri;
+        }
+
+        public static IEnumerable<Category> GetCategories(this CategoryList categoryList)
+        {
+            CategoryRepository categoryRepository = ServiceLocator.Current.GetInstance<CategoryRepository>();
+            return categoryList.Select(x => categoryRepository.Get(x));
         }
     }
 }

@@ -45,7 +45,7 @@ namespace PizzeriaEpiserverSite.Models.Pages
                 return;
             }
 
-            var editableNewsPage = this.CreateWritableClone() as NewsPage;
+            var editableNewsPage = this.CreateWritableClone() as BlogPage;
             editableNewsPage.CommentFolder = newCommentFolder.ContentLink;
             contentRepository.Save(editableNewsPage, EPiServer.DataAccess.SaveAction.Publish,
                 EPiServer.Security.AccessLevel.Publish);

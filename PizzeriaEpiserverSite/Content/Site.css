@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 40px;
     padding-bottom: 20px;
     width: 100%;
     background-color: azure;
@@ -10,12 +10,14 @@
 legend {
     color: dimgray;
     font-family: "Tahoma";
+    text-transform: uppercase;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+    margin-top: 0px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -59,12 +61,17 @@ textarea {
     padding-left: 200px;
 }
 
-.jumbotron {
-    background-color: lightskyblue;
-}
-
 .navbar {
     background-color: lightskyblue;
+    margin-top: 30px;
+    height: 110px;
+    padding-top: 0px;
+}
+
+.navbar-static-top {
+    left: 0;
+    right: 0;
+    /*position: fixed;*/
 }
 
 /*.navbar-inner {
@@ -79,15 +86,30 @@ textarea {
     padding-top: 0;
 }
 
-.navbar-inverse .navbar-brand {
+.navbar .navbar-brand {
     color: dimgray;
     font-size: 70px;
 }
 
 .nav.navbar-nav li a {
     color: dimgray;
+    text-transform: uppercase;
 }
 
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    /*vertical-align: top;*/
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
+.blog {
+    margin: auto;
+    text-align: center;
+}
 
 #logo {
     width: 150px;

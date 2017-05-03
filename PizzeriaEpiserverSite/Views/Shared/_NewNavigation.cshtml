@@ -1,45 +1,53 @@
 ﻿@using PizzeriaEpiserverSite.Helpers
 @using EPiServer.Core
 @using EPiServer
+@using EPiServer.DataAbstraction
 @using EPiServer.ServiceLocation
 @using PizzeriaEpiserverSite.Business
 @using PizzeriaEpiserverSite.Models.Pages
 @using PizzeriaEpiserverSite.Models.ViewModels
 @using PizzeriaEpiserverSite.Extensions
 @model IPageViewModel<SitePageData>
+@model BlogCateoryListViewModel
 
+<div class ="blog">
+    <div class="container">
+        <a href="/@ContentReference.StartPage.GetUrl()"><img id="logo" src="/Static/img/BloggLogo2.png" /></a>
+    </div>
+</div>
 
-
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar  navbar-static-top">
     <div id="navbarContainer" class="container">
-        <div class="jumbotron">
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/@ContentReference.StartPage.GetUrl()"><img id="logo" src="/Static/img/BloggLogo2.png" /></a>
-
-
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-left">
+                <ul class="nav navbar-nav">
                     @*<li class="@(Model.CurrentPage.ContentLink.CompareToIgnoreWorkID(ContentReference.StartPage) ? "active" : null)">
                             @Html.PageLink(ContentReference.StartPage)
                         </li>*@
 
                     @Html.MenuList(ContentReference.StartPage,
-                @<li class="@(item.Selected ? "active" : null)">
-                    @Html.PageLink(item.Page)
-                </li>)
+                        @<li class="@(item.Selected ? "active" : null)">
+                            @Html.PageLink(item.Page)
+                        </li>)
                 </ul>
+  
+                @*<a href="/@ServiceLocator.Current.GetInstance<CategoryRepository>()"></a>*@
+                @*<div>@Model.category</div>*@
+                
+
                 @*@{
                         var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
-                        var newspage = contentLoader.Get<NewsPage>(Model.CurrentPage.ContentLink);
+                        var newspage = contentLoader.Get<BlogPage>(Model.CurrentPage.ContentLink);
                     }*@
                 <div class="navbar-search">
-                    @*@using (Html.BeginForm(null, null, FormMethod.Post, new { @action = DataFactory.Instance.Get<PizzeriaEpiserverSite.Models.Pages.NewsPage>(newspage.ContentLink).SearchPageLink.ExternalURLFromReference() }))
+                    @*@using (Html.BeginForm(null, null, FormMethod.Post, new { @action = DataFactory.Instance.Get<PizzeriaEpiserverSite.Models.Pages.BlogPage>(newspage.ContentLink).SearchPageLink.ExternalURLFromReference() }))
                         {
                             <div class="col-sm-3 col-md-3 pull-right" >
                                 <form class="navbar-form" role="search">
@@ -56,7 +64,6 @@
 
             </div>
         </div>
-    </div>
     </div>
 
 

@@ -21,7 +21,7 @@ namespace PizzeriaEpiserverSite.Configuration
                 url: "",
                 defaults: new
                 {
-                    controller = "NewsPage",
+                    controller = "BlogPage",
                     action = "Index"
                 });
 }

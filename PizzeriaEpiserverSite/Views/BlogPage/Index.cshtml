@@ -1,0 +1,52 @@
+﻿@using EPiServer.Core
+@model PizzeriaEpiserverSite.Models.ViewModels.BlogPageViewModel
+
+@{
+    Layout = "~/Views/Shared/_LeftNavigation.cshtml";
+}
+
+<h1>@Html.PropertyFor(x => x.CurrentPage.PageName)</h1>
+<p class="introduction">
+    @Html.PropertyFor(m => m.CurrentPage.MetaDescription)
+</p>
+<div class="row">
+    <div class="col-md-8">
+        @Html.PropertyFor(x => x.CurrentPage.MainBody)
+        @Html.PropertyFor(x => x.CurrentPage.MainListing)
+    </div>
+</div>
+
+<br />
+
+@*@if (!ContentReference.IsNullOrEmpty(Model.CurrentPage.CommentFolder))*@
+@if(Model.CommentFolderIsSet)
+{
+    <h3>@Html.Translate("/postedcomment/listheading")</h3>
+    foreach (var c in Model.CommentList)
+    {
+        ContentReference currentCommentRef = ((IContent) c).ContentLink;
+        <div class="date">
+            @Html.ActionLink(
+           Html.Translate("/postedcomment/reportcommentlink"),
+           "ReportComment",
+           new {commentReference = currentCommentRef})
+        </div>
+
+        Html.RenderPartial("PostedComment", c);
+    }
+
+    if (Model.HasCommentPublishAccess)
+    {
+        using (Html.BeginForm("Create", null, FormMethod.Post))
+        {
+            <fieldset>
+                <legend>@Html.Translate("/postedcomment/form/fieldsetlegend")</legend>
+                @Html.Label(@Html.Translate("/postedcomment/form/commentatornamelabel"))
+                @Html.TextBox("CommentatorName")
+                @Html.Label(@Html.Translate("/postedcomment/form/commenttextlabel"))
+                @Html.TextArea("Text")
+                <input type="submit" value=@Html.Translate("/postedcomment/form/submitbutton") />
+            </fieldset>
+        }
+    }
+}

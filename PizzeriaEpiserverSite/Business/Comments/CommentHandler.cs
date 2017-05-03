@@ -54,8 +54,8 @@ namespace PizzeriaEpiserverSite.Business.Comments
         public static ContentFolder AddNewCommentFolder(IContentRepository contentRepository, IContent contentItemToComment)
         {
             var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
-            var newspage = contentLoader.Get<NewsPage>(ContentReference.StartPage).CommentRoot;
-            var rootFolderReference = contentRepository.Get<NewsPage>(ContentReference.StartPage).CommentRoot;
+            var newspage = contentLoader.Get<BlogPage>(ContentReference.StartPage).CommentRoot;
+            var rootFolderReference = contentRepository.Get<BlogPage>(ContentReference.StartPage).CommentRoot;
             rootFolderReference = newspage;
 
             if (ContentReference.IsNullOrEmpty(rootFolderReference))
