@@ -5,6 +5,8 @@
     background-color: azure;
     color: dimgray;
     font-family: "Tahoma";
+    /*background-image: url("/Static/img/12068997_10207537217370707_8114422021753262934_o.jpg");*/
+    /*opacity: 0.5;*/
 }
 
 legend {
@@ -18,6 +20,7 @@ legend {
     /*padding-left: 15px;
     padding-right: 15px;*/
     margin-top: 0px;
+        position: absolute;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -32,12 +35,12 @@ textarea {
     box-shadow: 10px 10px 5px grey;
 }*/
 
-#pizzaContainer {
+/*#pizzaContainer {
     width: 270px;
     float: left;
     margin: 11px;
     background-color: white;
-}
+}*/
 
 #imgContainer {
     width: 270px;
@@ -46,7 +49,7 @@ textarea {
     overflow: hidden;
 }
 
-#pizzaImg {
+/*#pizzaImg {
     position: absolute;
     top: -9999px;
     bottom: -9999px;
@@ -59,14 +62,30 @@ textarea {
 #pizzaText {
     margin-left: 200px;
     padding-left: 200px;
-}
+}*/
 
 .navbar {
     background-color: lightskyblue;
-    margin-top: 30px;
+    margin-top: -10px;
     height: 110px;
     padding-top: 0px;
+        /*background-image: url("/Static/img/12068997_10207537217370707_8114422021753262934_o.jpg");*/
 }
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+#backgroundImage {
+    width: 100%;
+      margin-top: 50px;
+}
+
+
 
 .navbar-static-top {
     left: 0;
@@ -107,13 +126,26 @@ textarea {
 }
 
 .blog {
-    margin: auto;
     text-align: center;
 }
 
 #logo {
+    margin-top: -150px;
     width: 150px;
+   margin-left: -70px;
+   /*width:13%;*/
+
     /*margin-right: 30px;
     margin-left: 10px;
     margin-top: 10px;*/
+}
+
+
+@media screen and (max-width:700px) {
+    #logo {
+        margin-top: -120px;
+           margin-left: -55px;
+            width: 120px;
+    }
+
 }

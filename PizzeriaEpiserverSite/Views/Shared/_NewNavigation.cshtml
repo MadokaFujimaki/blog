@@ -9,17 +9,21 @@
 @using PizzeriaEpiserverSite.Extensions
 @model IPageViewModel<SitePageData>
 
-<div class ="blog">
-    <div class="container">
-        <a href="/@ContentReference.StartPage.GetUrl()"><img id="logo" src="/Static/img/BloggLogo2.png" /></a>
+
+<div class="relative">
+    <img id="backgroundImage" src="/Static/img/Berg.png" />
+
+    <div class="blog">
+        <div class="container">
+            <a href="/@ContentReference.StartPage.GetUrl()"><img id="logo" class="absolute" src="/Static/img/BloggLogo2.png" /></a>
+        </div>
     </div>
-</div>
 
-<div class="navbar  navbar-static-top">
-    <div id="navbarContainer" class="container">
-
+    <div class="navbar  navbar-static-top absolute">
+        <div id="navbarContainer" class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -32,15 +36,15 @@
                         </li>*@
 
                     @Html.MenuList(ContentReference.StartPage,
-                        @<li class="@(item.Selected ? "active" : null)">
-                            @Html.PageLink(item.Page)
-                        </li>)
+                @<li class="@(item.Selected ? "active" : null)">
+                    @Html.PageLink(item.Page)
+                </li>)
                 </ul>
-  
+
                 @*<a href="/@ServiceLocator.Current.GetInstance<CategoryRepository>()"></a>*@
                 @*@{CategoryRepository categoryRepository = ServiceLocator.Current.GetInstance<CategoryRepository>();}*@
-  
-                
+
+
 
                 @*@{
                         var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
@@ -67,7 +71,7 @@
     </div>
 
 
-
+</div> 
 
 
 

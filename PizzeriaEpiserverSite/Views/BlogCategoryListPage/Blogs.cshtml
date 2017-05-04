@@ -5,7 +5,12 @@
 {
     foreach (var page in Model.Pages)
     {
-        <h2>@page.Name</h2>
+        <h2><a>@page.Name</a></h2>
+        <p>@page.StartPublish.Value</p>
         <p>@page.MainBody</p>
     }
+}
+else
+{
+  
 }
