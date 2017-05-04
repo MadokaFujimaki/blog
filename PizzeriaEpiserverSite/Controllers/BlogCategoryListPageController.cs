@@ -16,20 +16,27 @@ namespace PizzeriaEpiserverSite.Controllers
 {
     public class BlogCategoryListPageController : PageController<BlogCategoryListPage>
     {
-        public ActionResult Index(BlogCategoryListPage currentPage, string category)
+        public ActionResult Index(BlogCategoryListPage currentPage)
+        {
+            var model = new BlogCategoryListViewModel(currentPage)
+            {
+                Categories = GetAllCategories(),
+            };
+            return View(model);
+        }
+
+        public ActionResult SelectCategory(BlogCategoryListPage currentPage, string category)
         {
             var model = new BlogCategoryListViewModel(currentPage)
             {
                 Categories = GetAllCategories(),
                 Pages = FindPagesForCategory(category)
             };
-
-            return View(model);
+            return PartialView( "Blogs", model);
         }
 
         private List<BlogPage> FindPagesForCategory(string category)
         {
-
             var pageTypeId = ServiceLocator.Current.GetInstance<IContentTypeRepository>()
                 .Load<BlogPage>()
                 .ID;

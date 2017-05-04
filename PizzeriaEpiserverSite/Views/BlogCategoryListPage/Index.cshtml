@@ -1,14 +1,41 @@
 ﻿@model PizzeriaEpiserverSite.Models.ViewModels.BlogCategoryListViewModel
 
-@foreach (var page in Model.Pages)
+@*@foreach (var page in Model.Pages)
 {
     <h2>@page.Name</h2>
-}
+}*@
 
-@foreach (var category in Model.Categories)
+@*@foreach (var category in Model.Categories)
 {
     <h3>@category.Name</h3>
+}*@
+
+
+
+@foreach (var Category in Model.Categories)
+{
+    <a href="@Url.Action("SelectCategory", "BlogCategoryListPage", new { category = Category.Name })">@Category.Name</a>
+    @*<a asp-controller="BlogCategoryListPage" asp-asction="Index" asp-route-id="Category.Name">@Category.Name</a>*@
 }
+
+
+
+
+
+
+
+@*@foreach (var Category in Model.Categories)
+    {
+        <a onclick="location.href=@Url.Action("Index", "BlogCategoryListPage")"?category=Category>@Category.Name</a>
+    }*@
+
+
+
+
+
+
+
+
 
 @*@if (Model.category != null)
 {

@@ -1,0 +1,10 @@
+﻿@model PizzeriaEpiserverSite.Models.ViewModels.BlogCategoryListViewModel
+
+@{
+    Layout = null;
+}
+
+@foreach (var page in Model.Pages)
+    {
+        <h2>@page.Name</h2>
+    }

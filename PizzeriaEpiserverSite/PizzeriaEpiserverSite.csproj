@@ -384,6 +384,7 @@
     <Content Include="Views\FAQPage\Index.cshtml" />
     <Content Include="Views\Shared\PostedComment.cshtml" />
     <Content Include="Views\BlogCategoryListPage\Index.cshtml" />
+    <Content Include="Views\BlogCategoryListPage\Blogs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
