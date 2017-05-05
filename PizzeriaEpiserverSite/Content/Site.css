@@ -19,8 +19,10 @@ legend {
 .body-content {
     /*padding-left: 15px;
     padding-right: 15px;*/
-    margin-top: 0px;
-        position: absolute;
+    margin-top: 40px;
+    width: 85%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -57,11 +59,6 @@ textarea {
     right: -9999px;
     margin: auto;
     width: 400px;
-}
-
-#pizzaText {
-    margin-left: 200px;
-    padding-left: 200px;
 }*/
 
 .navbar {
@@ -69,7 +66,6 @@ textarea {
     margin-top: -10px;
     height: 110px;
     padding-top: 0px;
-        /*background-image: url("/Static/img/12068997_10207537217370707_8114422021753262934_o.jpg");*/
 }
 
 .relative {
@@ -82,7 +78,7 @@ textarea {
 
 #backgroundImage {
     width: 100%;
-      margin-top: 50px;
+    margin-top: 50px;
 }
 
 
@@ -132,20 +128,18 @@ textarea {
 #logo {
     margin-top: -150px;
     width: 150px;
-   margin-left: -70px;
-   /*width:13%;*/
-
-    /*margin-right: 30px;
-    margin-left: 10px;
-    margin-top: 10px;*/
+    margin-left: -70px;
 }
 
 
 @media screen and (max-width:700px) {
     #logo {
         margin-top: -120px;
-           margin-left: -55px;
-            width: 120px;
+        margin-left: -55px;
+        width: 120px;
     }
+}
 
+.blogImage {
+    width: 100%
 }

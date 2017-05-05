@@ -1,4 +1,5 @@
-﻿@model PizzeriaEpiserverSite.Models.ViewModels.BlogCategoryListViewModel
+﻿@using EPiServer.Web.Routing
+@model PizzeriaEpiserverSite.Models.ViewModels.BlogCategoryListViewModel
 
 
 @if (Model.Pages != null)
@@ -7,7 +8,13 @@
     {
         <h2><a>@page.Name</a></h2>
         <p>@page.StartPublish.Value</p>
+        if (@page.PageImage!= null)
+        {
+            <img class="blogImage" src="@UrlResolver.Current.GetUrl(page.PageImage)" />
+        }
         <p>@page.MainBody</p>
+        <br/>
+        <hr/>
     }
 }
 else
