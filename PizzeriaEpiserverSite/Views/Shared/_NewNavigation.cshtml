@@ -50,8 +50,9 @@
                         var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
                         var newspage = contentLoader.Get<BlogPage>(Model.CurrentPage.ContentLink);
                     }*@
-                <div class="navbar-search">
-                    @*@using (Html.BeginForm(null, null, FormMethod.Post, new { @action = DataFactory.Instance.Get<PizzeriaEpiserverSite.Models.Pages.BlogPage>(newspage.ContentLink).SearchPageLink.ExternalURLFromReference() }))
+
+                @*<div class="navbar-search">
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { @action = DataFactory.Instance.Get<PizzeriaEpiserverSite.Models.Pages.BlogPage>(newspage.ContentLink).SearchPageLink.ExternalURLFromReference() }))
                         {
                             <div class="col-sm-3 col-md-3 pull-right" >
                                 <form class="navbar-form" role="search">
@@ -63,8 +64,8 @@
                                     </div>
                                 </form>
                             </div>
-                        }*@
-                </div>
+                        }
+                </div>*@
 
             </div>
         </div>

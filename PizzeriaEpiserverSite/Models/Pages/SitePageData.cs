@@ -31,7 +31,7 @@ namespace PizzeriaEpiserverSite.Models.Pages
         Order = 300)]
         public virtual string MetaDescription { get; set; }
 
-        [UIHint(UIHint.Image)]
+        [UIHint(UIHint.MediaFile)]
         [Display(
         Name = "PageImage",
         GroupName = SystemTabNames.Content,

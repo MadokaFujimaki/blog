@@ -1,16 +1,22 @@
 ﻿@using EPiServer.Core
+@using EPiServer.Web.Routing
 @model PizzeriaEpiserverSite.Models.ViewModels.BlogPageViewModel
 
-@{
+@*@{
     Layout = "~/Views/Shared/_LeftNavigation.cshtml";
-}
+}*@
 
 <h1>@Html.PropertyFor(x => x.CurrentPage.PageName)</h1>
+<p>@Html.PropertyFor(x => x.CurrentPage.StartPublish.Value)</p>
+@if (Html.PropertyFor(x => x.CurrentPage.PageImage) != null)
+{
+    <div class="blogImage2">@Html.PropertyFor(x => x.CurrentPage.PageImage)</div>
+}
 <p class="introduction">
     @Html.PropertyFor(m => m.CurrentPage.MetaDescription)
 </p>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         @Html.PropertyFor(x => x.CurrentPage.MainBody)
         @Html.PropertyFor(x => x.CurrentPage.MainListing)
     </div>
@@ -19,17 +25,17 @@
 <br />
 
 @*@if (!ContentReference.IsNullOrEmpty(Model.CurrentPage.CommentFolder))*@
-@if(Model.CommentFolderIsSet)
+@if (Model.CommentFolderIsSet)
 {
     <h3>@Html.Translate("/postedcomment/listheading")</h3>
     foreach (var c in Model.CommentList)
     {
-        ContentReference currentCommentRef = ((IContent) c).ContentLink;
+        ContentReference currentCommentRef = ((IContent)c).ContentLink;
         <div class="date">
             @Html.ActionLink(
            Html.Translate("/postedcomment/reportcommentlink"),
            "ReportComment",
-           new {commentReference = currentCommentRef})
+           new { commentReference = currentCommentRef })
         </div>
 
         Html.RenderPartial("PostedComment", c);

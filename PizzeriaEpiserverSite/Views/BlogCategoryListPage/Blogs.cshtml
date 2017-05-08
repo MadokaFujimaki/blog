@@ -1,16 +1,25 @@
-﻿@using EPiServer.Web.Routing
+﻿@using PizzeriaEpiserverSite.Helpers
+@using System.Web.Hosting
+@using EPiServer.Web.Routing
 @model PizzeriaEpiserverSite.Models.ViewModels.BlogCategoryListViewModel
 
+@*@{
+    UnifiedFile file = HostingEnvironment.VirtualPathProvider.GetFile("PathToFile") as UnifiedFile;
+    if (file != null && file.Summary.Dictionary.Contains("Description"))
+    {
+        string altText = file.Summary.Dictionary["Description"].ToString();
+    }
+}*@
 
 @if (Model.Pages != null)
 {
     foreach (var page in Model.Pages)
     {
-        <h2><a>@page.Name</a></h2>
+        <h2><a href="@UrlResolver.Current.GetUrl(page)">@page.Name</a></h2>
         <p>@page.StartPublish.Value</p>
-        if (@page.PageImage!= null)
+        if (@page.PageImage != null)
         {
-            <img class="blogImage" src="@UrlResolver.Current.GetUrl(page.PageImage)" />
+            <img class="blogImage" alt="@Html.ImageAltText(page.PageImage)" src="@UrlResolver.Current.GetUrl(page.PageImage)" />
         }
         <p>@page.MainBody</p>
         <br/>

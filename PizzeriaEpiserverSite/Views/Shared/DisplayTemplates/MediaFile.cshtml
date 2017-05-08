@@ -1,0 +1,21 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Routing
+@using PizzeriaEpiserverSite.Models.Media
+@model ContentReference
+
+@{
+    var currentContent = !ContentReference.IsNullOrEmpty(Model)
+                             ? EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<EPiServer.IContentLoader>().Get<ImageData>(Model)
+                             : null;
+}
+
+@if (currentContent is ImageFile) // Images should be rendered with an image tag and an alt text
+{
+    var image = (ImageFile)currentContent;
+
+    <img class="blogImage" alt="@image.ImageDescription" src="@UrlResolver.Current.GetUrl(image.ContentLink)" />
+}
+else if (currentContent != null) // For all other media types, simply render a link
+{
+    <a href="@UrlResolver.Current.GetUrl(currentContent.ContentLink)">@currentContent.Name</a>
+}

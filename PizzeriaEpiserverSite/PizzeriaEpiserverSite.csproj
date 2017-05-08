@@ -278,6 +278,7 @@
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Helpers\ImageHelpers.cs" />
     <Compile Include="Interfaces\IBlock.cs" />
     <Compile Include="Models\Blocks\DiscussionBlock.cs" />
     <Compile Include="Models\Blocks\EditorialBlock.cs" />
@@ -387,6 +388,7 @@
     <Content Include="Views\Shared\PostedComment.cshtml" />
     <Content Include="Views\BlogCategoryListPage\Index.cshtml" />
     <Content Include="Views\BlogCategoryListPage\Blogs.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MediaFile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
