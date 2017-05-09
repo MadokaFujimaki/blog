@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
 </head>
 
 <body>
@@ -25,7 +27,8 @@
         <div class="row">
             <div id="header">
         
-                    @{Html.RenderPartial("_NewNavigation", Model);}
+                @{Html.RenderPartial("_NewNavigation", Model);}
+                
         
             </div>
         </div>
@@ -43,7 +46,7 @@
         </footer>
     </div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

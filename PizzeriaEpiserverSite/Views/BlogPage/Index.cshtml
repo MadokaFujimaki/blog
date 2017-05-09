@@ -24,8 +24,27 @@
 
 <br />
 
-@*@if (!ContentReference.IsNullOrEmpty(Model.CurrentPage.CommentFolder))*@
-@if (Model.CommentFolderIsSet)
+<div>
+    <script>
+        $(document).ready(function() {
+
+            $.getJSON("/api/comment/?pageid=2",
+                function(data) {
+                    console.log(data);
+                });
+        });
+    </script>
+
+</div>
+
+
+
+
+
+
+
+
+@*@if (Model.CommentFolderIsSet)
 {
     <h3>@Html.Translate("/postedcomment/listheading")</h3>
     foreach (var c in Model.CommentList)
@@ -55,4 +74,4 @@
             </fieldset>
         }
     }
-}
+}*@
