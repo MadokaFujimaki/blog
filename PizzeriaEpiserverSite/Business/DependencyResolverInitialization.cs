@@ -1,10 +1,9 @@
 ﻿using System.Web.Mvc;
-using AlloyTraining.Business;
+using PizzeriaEpiserverSite.Business;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc;
-using PizzeriaEpiserverSite.Business;
 using StructureMap;
 
 namespace PizzeriaEpiserverSite.Business

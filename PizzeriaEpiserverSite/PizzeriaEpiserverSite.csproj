@@ -403,7 +403,7 @@
     <Content Include="Views\FAQPage\Index.cshtml" />
     <Content Include="Views\Shared\PostedComment.cshtml" />
     <Content Include="Views\BlogCategoryListPage\Index.cshtml" />
-    <Content Include="Views\BlogCategoryListPage\Blogs.cshtml" />
+    <Content Include="Views\Shared\Blogs.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MediaFile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

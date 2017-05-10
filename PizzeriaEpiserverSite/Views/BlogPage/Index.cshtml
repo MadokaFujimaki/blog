@@ -3,8 +3,8 @@
 @model PizzeriaEpiserverSite.Models.ViewModels.BlogPageViewModel
 
 @*@{
-    Layout = "~/Views/Shared/_LeftNavigation.cshtml";
-}*@
+        Layout = "~/Views/Shared/_LeftNavigation.cshtml";
+    }*@
 
 <h1>@Html.PropertyFor(x => x.CurrentPage.PageName)</h1>
 <p>@Html.PropertyFor(x => x.CurrentPage.StartPublish.Value)</p>
@@ -24,18 +24,34 @@
 
 <br />
 
-<div>
-    <script>
-        $(document).ready(function() {
-
-            $.getJSON("/api/comment/?pageid=2",
-                function(data) {
-                    console.log(data);
-                });
-        });
-    </script>
-
+<h3>Comments</h3>
+<div id="comment">
 </div>
+
+<script>
+    $(document).ready(function() {
+        $.getJSON("/api/comment/?pageid=" + @Html.PropertyFor(x => x.CurrentPage.PageLink.ID),
+            function myFunction(data) {
+                var str = JSON.stringify(data, null, 2);
+                var obj = JSON.parse(str);
+
+                var comments = "";
+                for (var property in obj) {
+                   
+                    //var date = getDateFromFormat(obj[property].Date);
+                    comments += obj[property].CommentatorName +
+                        "<br> " +
+                       obj[property].Date.slice(0,10)
+                    
+                        + "<br> "+
+                
+                    obj[property].Text + "<br><br>";
+                    property++;
+                }
+                document.getElementById("comment").innerHTML = comments;
+            });
+    });
+</script>
 
 
 
@@ -45,33 +61,33 @@
 
 
 @*@if (Model.CommentFolderIsSet)
-{
-    <h3>@Html.Translate("/postedcomment/listheading")</h3>
-    foreach (var c in Model.CommentList)
     {
-        ContentReference currentCommentRef = ((IContent)c).ContentLink;
-        <div class="date">
-            @Html.ActionLink(
-           Html.Translate("/postedcomment/reportcommentlink"),
-           "ReportComment",
-           new { commentReference = currentCommentRef })
-        </div>
-
-        Html.RenderPartial("PostedComment", c);
-    }
-
-    if (Model.HasCommentPublishAccess)
-    {
-        using (Html.BeginForm("Create", null, FormMethod.Post))
+        <h3>@Html.Translate("/postedcomment/listheading")</h3>
+        foreach (var c in Model.CommentList)
         {
-            <fieldset>
-                <legend>@Html.Translate("/postedcomment/form/fieldsetlegend")</legend>
-                @Html.Label(@Html.Translate("/postedcomment/form/commentatornamelabel"))
-                @Html.TextBox("CommentatorName")
-                @Html.Label(@Html.Translate("/postedcomment/form/commenttextlabel"))
-                @Html.TextArea("Text")
-                <input type="submit" value=@Html.Translate("/postedcomment/form/submitbutton") />
-            </fieldset>
+            ContentReference currentCommentRef = ((IContent)c).ContentLink;
+            <div class="date">
+                @Html.ActionLink(
+               Html.Translate("/postedcomment/reportcommentlink"),
+               "ReportComment",
+               new { commentReference = currentCommentRef })
+            </div>
+
+            Html.RenderPartial("PostedComment", c);
         }
-    }
-}*@
+
+        if (Model.HasCommentPublishAccess)
+        {
+            using (Html.BeginForm("Create", null, FormMethod.Post))
+            {
+                <fieldset>
+                    <legend>@Html.Translate("/postedcomment/form/fieldsetlegend")</legend>
+                    @Html.Label(@Html.Translate("/postedcomment/form/commentatornamelabel"))
+                    @Html.TextBox("CommentatorName")
+                    @Html.Label(@Html.Translate("/postedcomment/form/commenttextlabel"))
+                    @Html.TextArea("Text")
+                    <input type="submit" value=@Html.Translate("/postedcomment/form/submitbutton") />
+                </fieldset>
+            }
+        }
+    }*@

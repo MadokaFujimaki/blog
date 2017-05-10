@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using StructureMap;
 
-namespace AlloyTraining.Business
+namespace PizzeriaEpiserverSite.Business
 {
     public class StructureMapDependencyResolver : IDependencyResolver
     {
