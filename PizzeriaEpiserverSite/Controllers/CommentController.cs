@@ -17,28 +17,31 @@ using EPiServer.Web.Routing;
 using PizzeriaEpiserverSite.Business.Comments;
 using PizzeriaEpiserverSite.Models.Blocks;
 using PizzeriaEpiserverSite.Models.Pages;
+using PizzeriaEpiserverSite.Models.ViewModels.Api;
 
 namespace PizzeriaEpiserverSite.Controllers
 {
     public class CommentController : ApiController
     {
-        //private CommentHandler _commentHandler;
-
+        private readonly IContentLoader _contentLoader;
+        private readonly CommentHandler _commentHandler;
         //// GET api/<controller>
         //public IEnumerable<string> Get()
         //{
         //    return new string[] { "value1", "value2" };
         //}
 
+        public CommentController()
+        {
+            _contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+            _commentHandler = ServiceLocator.Current.GetInstance<CommentHandler>();
+        }
+
         // GET api/<controller>/5
         //public BlogPageViewModel Get(int pageid)
         public IEnumerable<ApiComment> Get(int pageid)
         {
-            var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
-            var page = contentLoader.Get<BlogPage>(new ContentReference(pageid));  // get hela sidan
-            var contentRepository = ServiceLocator.Current.GetInstance<IContentRepository>();
-            CommentHandler _commentHandler = new CommentHandler(contentRepository);
-
+            var page = _contentLoader.Get<BlogPage>(new ContentReference(pageid));  // get hela sidan
 
             var commentList = _commentHandler.LoadComments(page.CommentFolder);
             return commentList.Select(x => new ApiComment() {CommentatorName = x.CommentatorName, Date = x.Date, Text = x.Text});
@@ -46,29 +49,21 @@ namespace PizzeriaEpiserverSite.Controllers
             //var model = new BlogPageViewModel(page);
             //model.CommentList = _commentHandler.LoadComments(page.CommentFolder);
             //model.HasCommentPublishAccess = _commentHandler.CurrentUserHasCommentPublishAccess(page.CommentFolder);
-            //model.CommentFolderIsSet = _commentHandler.CommentFolderIsSet(page.CommentFolder);
-
-
-
-
-
-            //    .Get<MediaData>(imageContentReference)
-
-            //CommentList = _commentHandler.LoadComments(),
-            //    HasCommentPublishAccess = _commentHandler.CurrentUserHasCommentPublishAccess(currentPage.CommentFolder),
-            //    CommentFolderIsSet = _commentHandler.CommentFolderIsSet(currentPage.CommentFolder)
-
-
-            //var contentRepository = ServiceLocator.Current.GetInstance<IContentRepository>(pageid.ToString());
-            //comments = _contentRepository.GetChildren<IContent>(contentRepository).ToList<IContent>();
-            //comments = ServiceLocator.Current.GetInstance<IContentLoader>().Get<BlockData>();
-            //return comments;
-
+            //model.CommentFolderIsSet = _commentHandler.CommentFolderIsSet(page.CommentFolder); 
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public RequestComment Post([FromBody] RequestComment comment)
         {
+            var page = _contentLoader.Get<BlogPage>(new ContentReference(comment.PageId));
+             _commentHandler.AddComment(page.CommentFolder, comment.AuthorName, comment.Comment, DateTime.Now);
+
+            return comment;
+
+            //return comment.AuthorName;
+            //var page = _contentLoader.Get<BlogPage>(new ContentReference(comment.PageId));  // get hela sidan
+            //_commentHandler.
         }
 
         // PUT api/<controller>/5

@@ -315,7 +315,9 @@
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StandardPage.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
-    <Compile Include="Models\ViewModels\ApiComment.cs" />
+    <Compile Include="Models\ViewModels\Api\RequestComment.cs" />
+    <Compile Include="Models\ViewModels\Api\RequestSearch.cs" />
+    <Compile Include="Models\ViewModels\Api\ResponseComment.cs" />
     <Compile Include="Models\ViewModels\BlockEditPageViewModel.cs" />
     <Compile Include="Models\ViewModels\DefaultPageViewModel.cs" />
     <Compile Include="Models\ViewModels\FooterModel.cs" />

@@ -27,25 +27,63 @@
 <h3>Comments</h3>
 <div id="comment">
 </div>
+<div id ="postResult"></div>
+
+<h3>What do you think? Write a comment!</h3>
+
+<form id ="myForm"  >
+    Author name: <input type="text"  id="form-authorName"/><br/>
+    Comment: <input type="text" id="form-comment" />
+    <button  id="form-button">Send</button>
+</form>
 
 <script>
+    var pageId = @Model.CurrentPage.PageLink.ID;
+
     $(document).ready(function() {
-        $.getJSON("/api/comment/?pageid=" + @Html.PropertyFor(x => x.CurrentPage.PageLink.ID),
+        //console.log($("#form-button"));
+        //alert($('#form-authorName').val());
+
+        $('#form-button').click(function(event) {
+            event.preventDefault();
+           var comment = {
+                PageId: pageId,
+                AuthorName: $('#form-authorName').val(),
+                Comment: $('#form-comment').val()
+           };
+           console.log(JSON.stringify(comment));
+            $.ajax({
+                type: "POST",
+                url: "/api/comment/post",
+                data: JSON.stringify(comment),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    location.reload();
+                    //$('#postResult').html(result);
+                    $("#myForm").remove();
+                }
+            });
+
+        });
+    });
+
+
+    $(document).ready(function() {
+        $.getJSON("/api/comment/?pageid=" + pageId,
             function myFunction(data) {
                 var str = JSON.stringify(data, null, 2);
                 var obj = JSON.parse(str);
 
                 var comments = "";
                 for (var property in obj) {
-                   
+
                     //var date = getDateFromFormat(obj[property].Date);
                     comments += obj[property].CommentatorName +
                         "<br> " +
-                       obj[property].Date.slice(0,10)
-                    
+                        obj[property].Date.slice(0,10)
                         + "<br> "+
-                
-                    obj[property].Text + "<br><br>";
+                        obj[property].Text + "<br><br>";
                     property++;
                 }
                 document.getElementById("comment").innerHTML = comments;
@@ -55,7 +93,29 @@
 
 
 
-
+@*@{
+                using (Html.BeginForm("Post", "Comment", null, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+            <div class="form-group">
+                @Html.Label("Your name ", new { @class = "col-sm-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBox("CommentatorName")
+                </div>
+            </div>
+                    <div class="form-group">
+                        @Html.Label("Comment", new { @class = "col-sm-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextArea("Text", new { @class = "form-control" })
+                        </div>
+                    </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" value="Add" class="btn btn-primary btn-lg" />
+                            </div>
+                        </div>
+        }
+    }*@
 
 
 

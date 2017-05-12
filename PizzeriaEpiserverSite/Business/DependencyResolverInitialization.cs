@@ -4,6 +4,7 @@ using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc;
+using PizzeriaEpiserverSite.Business.Comments;
 using StructureMap;
 
 namespace PizzeriaEpiserverSite.Business
@@ -20,7 +21,7 @@ namespace PizzeriaEpiserverSite.Business
         private static void ConfigureContainer(ConfigurationExpression container)
         {
             //Swap out the default ContentRenderer for our custom
-            //container.For<IContentRenderer>().Use<ErrorHandlingContentRenderer>();
+            container.For<CommentHandler>().Use<CommentHandler>();
 
             //Implementations for custom interfaces can be registered here.
         }
