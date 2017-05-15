@@ -13,16 +13,20 @@
 
 @if (Model.Pages != null)
 {
+    <h2>- @Model.Category -</h2>
+    <br/>
     foreach (var page in Model.Pages)
     {
-        <h2><a href="@UrlResolver.Current.GetUrl(page)">@page.Name</a></h2>
-        <p>@page.StartPublish.Value</p>
-        if (@page.PageImage != null)
+        <h2 ><a href="@UrlResolver.Current.GetUrl(page)">@page.Name</a></h2>
+        <p >@page.StartPublish.Value</p>
+        @*if (@page.PageImage != null)
         {
             <img class="blogImage" alt="@Html.ImageAltText(page.PageImage)" src="@UrlResolver.Current.GetUrl(page.PageImage)" />
-        }
-        <p>@page.MainBody</p>
-        <br/>
+        }*@
+        @*<p>@page.MainBody</p>*@
+
+            @( @page.MainBody.ToString().Length > 100 ? @page.MainBody.ToString().Substring(3, 100) + " ..." : @page.MainBody.ToString().Substring(3, @page.MainBody.ToString().Length - 7))
+        
         <hr/>
     }
 }

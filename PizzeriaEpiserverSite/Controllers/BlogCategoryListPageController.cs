@@ -32,7 +32,8 @@ namespace PizzeriaEpiserverSite.Controllers
                 var model = new BlogCategoryListViewModel(currentPage)
                 {
                     Categories = GetAllCategories(),
-                    Pages = FindPagesForCategory(category)
+                    Pages = FindPagesForCategory(category),
+                    Category = category
                 };
                 return View(model);
             }

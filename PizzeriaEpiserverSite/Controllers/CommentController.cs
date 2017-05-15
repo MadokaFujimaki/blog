@@ -25,11 +25,6 @@ namespace PizzeriaEpiserverSite.Controllers
     {
         private readonly IContentLoader _contentLoader;
         private readonly CommentHandler _commentHandler;
-        //// GET api/<controller>
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
 
         public CommentController()
         {
@@ -38,7 +33,6 @@ namespace PizzeriaEpiserverSite.Controllers
         }
 
         // GET api/<controller>/5
-        //public BlogPageViewModel Get(int pageid)
         public IEnumerable<ApiComment> Get(int pageid)
         {
             var page = _contentLoader.Get<BlogPage>(new ContentReference(pageid));  // get hela sidan

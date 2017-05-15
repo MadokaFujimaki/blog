@@ -17,12 +17,11 @@ legend {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    /*padding-left: 15px;
+    /*/*padding-left: 15px;
     padding-right: 15px;*/
+      display: block;
     margin-top: 40px;
-    width: 85%;
-    margin-left: 15%;
-    margin-right: 15%;
+    width: 100%;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -140,10 +139,18 @@ textarea {
     }
 }
 
-.blogImage {
-    width: 100%;
+.blogContent {
+    text-align: center;
+      margin: auto;
 }
 
-.blogImage2 {
-    width: 100%;
+.blogImage {
+    width: 60%;
+  display: block;
+  margin: auto;
+
 }
+
+/*.blogImage2 {
+    width: 100%;
+}*/
