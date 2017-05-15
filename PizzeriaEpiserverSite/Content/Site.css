@@ -151,6 +151,10 @@ textarea {
 
 }
 
-/*.blogImage2 {
-    width: 100%;
-}*/
+.blogImage2 {
+    width: 15%;
+}
+
+hr {
+     border-color: black;
+}

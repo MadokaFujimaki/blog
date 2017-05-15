@@ -7,11 +7,14 @@
     }*@
 
 <h1 class="blogContent" >@Html.PropertyFor(x => x.CurrentPage.PageName)</h1>
-<p class="blogContent">@Html.PropertyFor(x => x.CurrentPage.StartPublish.Value)</p>
-<br/>
+@if (Model.CurrentPage.StartPublish != null)
+{
+    <p class="blogContent">@Model.CurrentPage.StartPublish.Value.ToString("yyyy-MM-dd")</p>
+}
+<br />
 @if (Html.PropertyFor(x => x.CurrentPage.PageImage) != null)
 {
-    <div class="blogImage2">@Html.PropertyFor(x => x.CurrentPage.PageImage)</div>
+    <div class="blogImage">@Html.PropertyFor(x => x.CurrentPage.PageImage)</div>
 }
 <p class="introduction">
     @Html.PropertyFor(m => m.CurrentPage.MetaDescription)
@@ -26,9 +29,11 @@
 
 <br />
 
-<h3>Comments</h3>
-<div id="comment"></div>
+    <h3>Comments</h3>
+    <div id="comment"></div>
     <div id="postResult"></div>
+
+
 
 
     <h3>What do you think? Write a comment!</h3>
@@ -62,7 +67,7 @@
                         AuthorName: $('#form-authorName').val(),
                         Comment: $('#form-comment').val()
                     };
-                    console.log(JSON.stringify(comment));
+                    //console.log(JSON.stringify(comment));
                     $.ajax({
                         type: "POST",
                         url: "/api/comment/post",
@@ -97,6 +102,7 @@
                                 obj[property].Text + "<br><br>";
                             property++;
                         }
+
                         document.getElementById("comment").innerHTML = comments;
                     });
             });

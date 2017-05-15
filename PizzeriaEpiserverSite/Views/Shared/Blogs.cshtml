@@ -15,19 +15,32 @@
 {
     <h2>- @Model.Category -</h2>
     <br/>
+
     foreach (var page in Model.Pages)
     {
+        <hr />
         <h2 ><a href="@UrlResolver.Current.GetUrl(page)">@page.Name</a></h2>
-        <p >@page.StartPublish.Value</p>
-        @*if (@page.PageImage != null)
+        if (@page.StartPublish.Value != null)
         {
-            <img class="blogImage" alt="@Html.ImageAltText(page.PageImage)" src="@UrlResolver.Current.GetUrl(page.PageImage)" />
-        }*@
+            <p>@page.StartPublish.Value.ToString("yyyy-MM-dd")</p>
+        }
+
+        if (@page.PageImage != null)
+        {
+            <img class="blogImage2" alt="@Html.ImageAltText(page.PageImage)" src="@UrlResolver.Current.GetUrl(page.PageImage)" />
+            <br />   <br />
+        }
+
         @*<p>@page.MainBody</p>*@
 
-            @( @page.MainBody.ToString().Length > 100 ? @page.MainBody.ToString().Substring(3, 100) + " ..." : @page.MainBody.ToString().Substring(3, @page.MainBody.ToString().Length - 7))
-        
-        <hr/>
+if (@page.MainBody != null)
+{
+    @( @page.MainBody.ToString().Length > 100 ? @page.MainBody.ToString().Substring(3, 100) + " ..." : @page.MainBody.ToString().Substring(3, @page.MainBody.ToString().Length - 7))
+
+}
+
+<br /><br />
+
     }
 }
 else

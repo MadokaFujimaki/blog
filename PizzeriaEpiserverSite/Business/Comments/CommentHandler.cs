@@ -22,6 +22,10 @@ namespace PizzeriaEpiserverSite.Business.Comments
 
         public void AddComment(ContentReference commentFolderReference, string name, string text, DateTime date)
         {
+            //if (commentFolderReference == null)
+            //{
+            //    commentFolderReference = new ContentReference();
+            //}
             PostedComment newCommentBlock = _contentRepository.GetDefault<PostedComment>(commentFolderReference);
 
             newCommentBlock.Text = text;
@@ -54,9 +58,7 @@ namespace PizzeriaEpiserverSite.Business.Comments
         public static ContentFolder AddNewCommentFolder(IContentRepository contentRepository, IContent contentItemToComment)
         {
             var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
-            var newspage = contentLoader.Get<BlogPage>(ContentReference.StartPage).CommentRoot;
-            var rootFolderReference = contentRepository.Get<BlogPage>(ContentReference.StartPage).CommentRoot;
-            rootFolderReference = newspage;
+            var rootFolderReference = contentLoader.Get<BlogCategoryListPage>(ContentReference.StartPage).CommentRoot;
 
             if (ContentReference.IsNullOrEmpty(rootFolderReference))
             {

@@ -42,6 +42,8 @@ namespace PizzeriaEpiserverSite.Controllers
                 var model = new BlogCategoryListViewModel(currentPage)
                 {
                     Categories = GetAllCategories(),
+                    Pages = GetAllblogPages(),
+                    Category = "All"
                 };
                 return View(model);
             }
@@ -87,6 +89,26 @@ namespace PizzeriaEpiserverSite.Controllers
             var root = categoryRepository.GetRoot();
             var children = root.Categories;
             return children.Select(x => x).ToList();
+        }
+
+        private List<BlogPage> GetAllblogPages()
+        {
+            var pageTypeId = ServiceLocator.Current.GetInstance<IContentTypeRepository>()
+                .Load<BlogPage>()
+                .ID;
+
+            PropertyCriteria pageTypeCriteria = new PropertyCriteria();
+            pageTypeCriteria.Name = "PageTypeId";
+            pageTypeCriteria.Type = PropertyDataType.PageType;
+            pageTypeCriteria.Condition = CompareCondition.Equal;
+            pageTypeCriteria.Value = pageTypeId.ToString();
+
+            var criteria = new PropertyCriteriaCollection { pageTypeCriteria };
+            var criteriaQuerySservice = ServiceLocator.Current.GetInstance<IPageCriteriaQueryService>();
+            var pages = criteriaQuerySservice.FindPagesWithCriteria(PageReference.StartPage, criteria);
+
+
+            return pages.Cast<BlogPage>().ToList();
         }
     }
 }

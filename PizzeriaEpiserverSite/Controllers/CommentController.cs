@@ -35,9 +35,15 @@ namespace PizzeriaEpiserverSite.Controllers
         // GET api/<controller>/5
         public IEnumerable<ApiComment> Get(int pageid)
         {
+   
             var page = _contentLoader.Get<BlogPage>(new ContentReference(pageid));  // get hela sidan
 
             var commentList = _commentHandler.LoadComments(page.CommentFolder);
+
+            if (commentList == null)
+            {
+                return new List<ApiComment>();
+            }
             return commentList.Select(x => new ApiComment() {CommentatorName = x.CommentatorName, Date = x.Date, Text = x.Text});
 
             //var model = new BlogPageViewModel(page);
