@@ -7,6 +7,7 @@ using EPiServer.Framework.DataAnnotations;
 using EPiServer.Web.Mvc;
 using PizzeriaEpiserverSite.Models.Pages;
 using PizzeriaEpiserverSite.Models.ViewModels;
+using EPiServer.Filters;
 
 namespace PizzeriaEpiserverSite.Controllers
 {
@@ -23,6 +24,7 @@ namespace PizzeriaEpiserverSite.Controllers
                 model.SearchText = q;
                 model.Search(q);
             }
+
             return View(model);
         }
     }

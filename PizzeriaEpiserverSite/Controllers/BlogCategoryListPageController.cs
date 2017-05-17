@@ -43,8 +43,9 @@ namespace PizzeriaEpiserverSite.Controllers
                 {
                     Categories = GetAllCategories(),
                     Pages = GetAllblogPages(),
-                    Category = "All"
+                    Category = "Latest blog"
                 };
+           
                 return View(model);
             }
         }

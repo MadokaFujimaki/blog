@@ -11,12 +11,16 @@
     }
 }*@
 
+@{
+    var model = @Model.Pages.OrderByDescending(x => x.StartPublish);
+}
+
 @if (Model.Pages != null)
 {
     <h2>- @Model.Category -</h2>
     <br/>
 
-    foreach (var page in Model.Pages)
+    foreach (var page in model)
     {
         <hr />
         <h2 ><a href="@UrlResolver.Current.GetUrl(page)">@page.Name</a></h2>
@@ -43,7 +47,5 @@ if (@page.MainBody != null)
 
     }
 }
-else
-{
-  
-}
+
+

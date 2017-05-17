@@ -14,7 +14,6 @@ namespace PizzeriaEpiserverSite.Controllers
     {
         public ActionResult Index(ProductPage currentPage)
         {
-
             DefaultPageViewModel<ProductPage> model = new DefaultPageViewModel<ProductPage>(currentPage);
             return View(model);
         }

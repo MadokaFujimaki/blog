@@ -19,7 +19,7 @@ legend {
 .body-content {
     /*/*padding-left: 15px;
     padding-right: 15px;*/
-      display: block;
+    display: block;
     margin-top: 40px;
     width: 100%;
 }
@@ -141,14 +141,13 @@ textarea {
 
 .blogContent {
     text-align: center;
-      margin: auto;
+    margin: auto;
 }
 
 .blogImage {
     width: 60%;
-  display: block;
-  margin: auto;
-
+    display: block;
+    margin: auto;
 }
 
 .blogImage2 {
@@ -156,5 +155,27 @@ textarea {
 }
 
 hr {
-     border-color: black;
+    border-color: black;
+}
+
+.center {
+    text-align: center;
+}
+
+.input-group {
+    max-width: 300px;
+    text-align: center;
+    margin: auto;
+}
+
+.backColor {
+    width: 70%;
+    text-align: center;
+    margin: auto;
+}
+
+.searchResults {
+
+        text-align: center;
+    margin: auto;
 }

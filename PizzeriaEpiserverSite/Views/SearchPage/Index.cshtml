@@ -1,39 +1,44 @@
-﻿@using PizzeriaEpiserverSite.Business
+﻿@using EPiServer.Filters
+@using PizzeriaEpiserverSite.Business
 @model PizzeriaEpiserverSite.Models.ViewModels.SearchPageViewModel
 
+<br/>
 <div class="row">
     <div class="span8">
         @using (Html.BeginForm(null, null, null, EPiServer.Editor.PageEditing.PageIsInEditMode ? FormMethod.Post : FormMethod.Get))
-        {
-            <div class="col-sm-3 col-md-3 pull-left">
+        {       
                 <form class="navbar-form" role="search">
                     <div class="input-group">
-                        <input class="form-control" type="text" tabindex="1" name="q" value="@Model.SearchText" />
+                        <input class="form-control " type="text" tabindex="1" name="q" value="@Model.SearchText" />
                         <div class="input-group-btn">
-                            <button tabindex="2" class="btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            <button tabindex="2" class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                             @*<input type="submit" tabindex="2" class="btn" value="Search" />*@
                         </div>
                     </div>
-                </form>
-            </div>
+                </form>         
         }
 
+        <br />
                 @if (@Model.SearchResult != null)
                 {
-                    <div class="row">
+                    @*<div class="row">
                         <div class="col-md-8 grayHead">
-                            @*<h2>Search Results</h2>*@
+                            <h2>Search Results</h2>
                         </div>
                     </div>
-                    <br />
+                    <br />*@
                     <div class="row">
-                        <div class="col-md-8 SearchResults">
+                        <div class="searchResults">
+               
                             @foreach (var item in Model.SearchResult)
                             {
+                                FilterForVisitor.Filter(item);
+
+                                <hr/>
                                 <div class="listResult">
-                                    <h3><a href="@item.GetExternalUrl()">@item.Title</a></h3>
+                                    <h3><a href="@item.GetExternalUrl()">@item.Title</a>
+                                    </h3>
                                     <p>@item.DisplayText.TruncateAtWord(20)</p>
-                                    <hr />
                                 </div>
                             }
                         </div>

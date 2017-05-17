@@ -1,4 +1,6 @@
-﻿@using PizzeriaEpiserverSite.Models.Pages
+﻿@using EPiServer.Web.Routing
+@using PizzeriaEpiserverSite.Helpers
+@using PizzeriaEpiserverSite.Models.Pages
 @model PizzeriaEpiserverSite.Models.ViewModels.DefaultPageViewModel <StandardPage>
 
 @*@{
@@ -10,8 +12,9 @@
 
 <div class="row">
     @*<div class="col-md-8 clearfix">*@
-    <div >
-        <h1>@Html.PropertyFor(x => x.CurrentPage.PageName)</h1>
+    <div class="center">
+        <h1 >@Html.PropertyFor(x => x.CurrentPage.PageName)</h1>
+        <img class="blogImage2" alt="@Html.ImageAltText( @Model.CurrentPage.PageImage)" src="@UrlResolver.Current.GetUrl( @Model.CurrentPage.PageImage)" />
         @Html.PropertyFor(x => x.CurrentPage.MainBody)
         @Html.PropertyFor(x => x.CurrentPage.Teaser)
     </div>
